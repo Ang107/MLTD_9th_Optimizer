@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
-  <meta http-equiv="refresh" content="5; url=https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/previews/anniv/9th/">
+  <noscript>
+    <meta http-equiv="refresh" content="5; url=https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/">
+  </noscript>
   <title>サイトを移転しました</title>
   <style>
     :root {
@@ -43,25 +45,6 @@
       inset: 0 0 auto;
       height: .25rem;
       background: linear-gradient(90deg, #5abfb7, #f19591, #f1becb, #5abfb7);
-    }
-    .mark {
-      display: grid;
-      width: 3.5rem;
-      height: 3.5rem;
-      margin: 0 auto 1.25rem;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #554171, #382a51);
-      color: #fff;
-      font-size: 1.6rem;
-      box-shadow: 0 .5rem 1.25rem rgba(56, 42, 81, .24);
-    }
-    .kicker {
-      margin: 0 0 .55rem;
-      color: #2f867f;
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .12em;
     }
     h1 {
       margin: 0;
@@ -128,12 +111,10 @@
 </head>
 <body>
   <main aria-labelledby="relocation-title">
-    <div class="mark" aria-hidden="true">→</div>
-    <p class="kicker">MLTD 9th ANNIVERSARY</p>
     <h1 id="relocation-title">サイトを移転しました</h1>
-    <p class="lead">周年イベント オプティマイザーは<br>新しいURLで公開しています。</p>
+    <p class="lead">MLTD 9th 周年イベント オプティマイザーは<br>新しいURLで公開しています。</p>
     <p class="redirect-status"><strong><span id="countdown">5</span>秒後</strong>に自動で移動します</p>
-    <a class="button" id="destination" href="https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/previews/anniv/9th/">
+    <a class="button" id="destination" href="https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/">
       新しいサイトへ移動 <span aria-hidden="true">→</span>
     </a>
     <p class="note">今後もご利用になる場合は、移動先をブックマークしてください。</p>
@@ -143,7 +124,7 @@
       "use strict";
 
       var OLD_BASE = "/MLTD_9th_Optimizer";
-      var NEW_BASE = "/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/previews/anniv/9th";
+      var NEW_BASE = "/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION";
       var suffix = location.pathname.indexOf(OLD_BASE) === 0
         ? location.pathname.slice(OLD_BASE.length)
         : "/";
@@ -151,6 +132,11 @@
       var link = document.getElementById("destination");
       var countdown = document.getElementById("countdown");
       var seconds = 5;
+
+      if (new URLSearchParams(location.search).get("preview") === "1") {
+        document.querySelector(".redirect-status").textContent = "プレビュー表示中（自動では移動しません）";
+        return;
+      }
 
       link.href = destination;
       window.setInterval(function () {
