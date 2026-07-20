@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="5; url=https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/">
+  <title>サイトを移転しました</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #171329;
+      color: #f8f7ff;
+    }
+    main {
+      width: min(36rem, calc(100% - 3rem));
+      padding: 2.5rem;
+      border: 1px solid #665d87;
+      border-radius: 1rem;
+      background: #241e3b;
+      box-shadow: 0 1rem 3rem #0006;
+      text-align: center;
+    }
+    h1 { margin-top: 0; }
+    p { line-height: 1.8; }
+    a { color: #bcb0ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>サイトを移転しました</h1>
+    <p>「MLTD 9th Optimizer」は、レガシー版サイトへ移転しました。</p>
+    <p><span id="countdown">5</span>秒後に新しいページへ自動的に移動します。</p>
+    <p><a id="destination" href="https://ang107.github.io/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION/">すぐに移動する</a></p>
+  </main>
+  <script>
+    (function () {
+      "use strict";
+
+      var OLD_BASE = "/MLTD_9th_Optimizer";
+      var NEW_BASE = "/MLTD_Anniversary_Event_Optimizer_LEGACY_VERSION";
+      var suffix = location.pathname.indexOf(OLD_BASE) === 0
+        ? location.pathname.slice(OLD_BASE.length)
+        : "/";
+      var destination = NEW_BASE + (suffix || "/") + location.search + location.hash;
+      var link = document.getElementById("destination");
+      var countdown = document.getElementById("countdown");
+      var seconds = 5;
+
+      link.href = destination;
+      window.setInterval(function () {
+        seconds -= 1;
+        countdown.textContent = String(Math.max(seconds, 0));
+      }, 1000);
+      window.setTimeout(function () {
+        location.replace(destination);
+      }, 5000);
+    }());
+  </script>
+</body>
+</html>
